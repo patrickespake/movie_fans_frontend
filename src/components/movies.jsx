@@ -19,7 +19,7 @@ class Movies extends Component {
       <>
         <div className="py-5 bg-light">
           <div className="container">
-            <p className="g-4">Showing {count} movies in the database.</p>
+            <p className="g-4">{`Showing ${count} movies in the database.`}</p>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
               {this.state.movies.map((movie) => (
                 <div className="col" key={movie.id}>

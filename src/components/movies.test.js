@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Movies from "./Movies";
 
 describe("Movies component", () => {
@@ -10,6 +10,11 @@ describe("Movies component", () => {
     expect(screen.getByText("Captains of the Clouds")).toBeInTheDocument();
     expect(screen.getByText("Odessa File, The")).toBeInTheDocument();
     expect(screen.getByText("Other Woman, The")).toBeInTheDocument();
+
+    // Assert that the count message is displayed correctly
+    expect(
+      screen.getByText(/Showing 10 movies in the database./)
+    ).toBeInTheDocument();
   });
 
   it("should render the genres for each movie", () => {
@@ -34,4 +39,15 @@ describe("Movies component", () => {
     // Assert that the view button is rendered for each movie
     expect(screen.queryAllByText("View")).toHaveLength(10);
   });
+
+  // it("should render a message if there are no movies in the database", () => {
+  //   jest.spyOn(movieService, "getMovies").mockReturnValue([]);
+
+  //   render(<Movies />);
+
+  //   // Assert that the "There are no movies in the database" message is displayed
+  //   expect(
+  //     screen.getByText("There are no movies in the database")
+  //   ).toBeInTheDocument();
+  // });
 });
