@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getMovies } from "../services/movieService";
+import Like from "./common/like";
 
 class Movies extends Component {
   state = {
@@ -8,6 +9,14 @@ class Movies extends Component {
 
   handleView = (movie) => {
     console.log(`/movies/${movie.id}`);
+  };
+
+  handleLike = (movie) => {
+    const movies = [...this.state.movies];
+    const index = movies.indexOf(movie);
+    movies[index] = { ...movies[index] };
+    movies[index].liked = !movies[index].liked;
+    this.setState({ movies });
   };
 
   render() {
@@ -40,6 +49,12 @@ class Movies extends Component {
                         >
                           View
                         </button>
+                      </div>
+                      <div className="d-flex justify-content-between align-items-center">
+                        <Like
+                          liked={movie.liked || false}
+                          onClick={() => this.handleLike(movie)}
+                        />
                       </div>
                     </div>
                     <ul className="list-group list-group-flush">
