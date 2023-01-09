@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Movie Fans Frontend",
+  "name": "An app for movie fans to find movies and owners",
   "icons": [
     {
       "src": "favicon.ico",
