@@ -39,15 +39,4 @@ describe("Movies component", () => {
     // Assert that the view button is rendered for each movie
     expect(screen.queryAllByText("View")).toHaveLength(10);
   });
-
-  // it("should render a message if there are no movies in the database", () => {
-  //   jest.spyOn(movieService, "getMovies").mockReturnValue([]);
-
-  //   render(<Movies />);
-
-  //   // Assert that the "There are no movies in the database" message is displayed
-  //   expect(
-  //     screen.getByText("There are no movies in the database")
-  //   ).toBeInTheDocument();
-  // });
 });
