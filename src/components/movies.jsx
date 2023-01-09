@@ -6,6 +6,10 @@ class Movies extends Component {
     movies: getMovies(),
   };
 
+  handleView = (movie) => {
+    console.log(`/movies/${movie.id}`);
+  };
+
   render() {
     return (
       <div className="py-5 bg-light">
@@ -26,6 +30,7 @@ class Movies extends Component {
                       <button
                         type="button"
                         className="btn btn-sm btn-outline-secondary"
+                        onClick={() => this.handleView(movie)}
                       >
                         View
                       </button>
