@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import { getMovies } from "../services/movieService";
 import Like from "./common/like";
+import Pagination from "./common/pagination";
+import { getMovies } from "../services/movieService";
 
 class Movies extends Component {
   state = {
     movies: getMovies(),
+    page: 1,
+    pageSize: 3,
   };
 
   handleView = (movie) => {
@@ -17,6 +20,10 @@ class Movies extends Component {
     movies[index] = { ...movies[index] };
     movies[index].liked = !movies[index].liked;
     this.setState({ movies });
+  };
+
+  handlePageChange = (page) => {
+    console.log(page);
   };
 
   render() {
@@ -71,6 +78,11 @@ class Movies extends Component {
                 </div>
               ))}
             </div>
+            <Pagination
+              page={this.state.page}
+              pageSize={this.state.pageSize}
+              onPageChange={this.handlePageChange}
+            />
           </div>
         </div>
       </>
