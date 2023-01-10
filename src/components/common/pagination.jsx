@@ -1,6 +1,12 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Pagination extends Component {
+  static propTypes = {
+    currentPage: PropTypes.number.isRequired,
+    onPageChange: PropTypes.func.isRequired,
+  };
+
   render() {
     const { currentPage, onPageChange } = this.props;
 
