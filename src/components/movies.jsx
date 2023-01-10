@@ -72,6 +72,7 @@ class Movies extends Component {
     });
   };
 
+  // TODO: Replace this method to use a server side filter
   filterMoviesByGenre = (genre) => {
     const filteredMovies =
       genre && genre.id
