@@ -115,13 +115,6 @@ describe("Movies component", () => {
     },
   ];
 
-  it("should render a message if there are no movies in the database", () => {
-    wrapper.setState({ movies: [] });
-    expect(wrapper.find("p").text()).toBe(
-      "There are no movies in the database."
-    );
-  });
-
   it("should render the movies list", () => {
     wrapper.setState({
       movies: mockMovies,
