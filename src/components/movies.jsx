@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import Like from "./common/like";
 import Pagination from "./common/pagination";
 import { getMovies } from "../services/movieService";
+import { paginate } from "../utils/paginate";
 
 class Movies extends Component {
   state = {
-    movies: getMovies(),
-    page: 1,
+    movies: paginate(getMovies(), 1, 3),
+    currentPage: 1,
     pageSize: 3,
+    showPagination: true,
   };
 
   handleView = (movie) => {
@@ -23,11 +25,21 @@ class Movies extends Component {
   };
 
   handlePageChange = (page) => {
-    console.log(page);
+    const { movies, pageSize } = this.state;
+
+    const currentPage = page + 1;
+    const newMovies = paginate(getMovies(), currentPage, pageSize);
+    const allMovies = [...movies, ...newMovies];
+
+    this.setState({ currentPage: page + 1 });
+    this.setState({ movies: allMovies });
+
+    if (newMovies.length < pageSize) this.setState({ showPagination: false });
   };
 
   render() {
     const { length: count } = this.state.movies;
+    const { currentPage, movies, showPagination } = this.state;
 
     if (count === 0) return <p>There are no movies in the database.</p>;
 
@@ -37,7 +49,7 @@ class Movies extends Component {
           <div className="container">
             <p className="g-4">{`Showing ${count} movies in the database.`}</p>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-              {this.state.movies.map((movie) => (
+              {movies.map((movie) => (
                 <div className="col" key={movie.id}>
                   <div className="card shadow-sm h-100">
                     <img
@@ -78,11 +90,12 @@ class Movies extends Component {
                 </div>
               ))}
             </div>
-            <Pagination
-              page={this.state.page}
-              pageSize={this.state.pageSize}
-              onPageChange={this.handlePageChange}
-            />
+            {showPagination && (
+              <Pagination
+                currentPage={currentPage}
+                onPageChange={this.handlePageChange}
+              />
+            )}
           </div>
         </div>
       </>
