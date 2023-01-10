@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Movies from "./components/movies";
-import MovieShow from "./components/movieShow";
+import MovieDetails from "./components/movieDetails";
 import NotFound from "./components/notFound";
 import "./App.css";
 
@@ -10,8 +10,8 @@ function App() {
     <main className="container">
       <Navbar />
       <Routes>
+        <Route path="/movies/:id" element={<MovieDetails />} />
         <Route path="/" exact element={<Movies />} />
-        <Route path="/movies/:id" element={<MovieShow />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </main>

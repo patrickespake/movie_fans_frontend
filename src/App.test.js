@@ -14,14 +14,14 @@ describe("App", () => {
     expect(view.text()).toContain("Showing 0 movies in the database.");
   });
 
-  it('should render MovieShow component when path is "/movies/:id"', () => {
+  it('should render MovieDetails component when path is "/movies/:id"', () => {
     const view = render(
       <MemoryRouter initialEntries={["/movies/1"]}>
         <App />
       </MemoryRouter>
     );
 
-    expect(view.text()).toContain("MovieShow Component");
+    expect(view.text()).toContain("Movie Details");
   });
 
   it("should render NotFound component when path is not matched", () => {
