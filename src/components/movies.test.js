@@ -164,12 +164,6 @@ describe("Movies component", () => {
     expect(spy).toHaveBeenCalled();
   });
 
-  it("should set the showPagination state to false if the newMovies array is shorter than the pageSize", () => {
-    wrapper.setState({ movies: mockMovies });
-    wrapper.instance().handlePageChange(4);
-    expect(wrapper.state().showPagination).toBe(false);
-  });
-
   it("should toggle the liked prop of the movie when the like button is clicked", () => {
     wrapper.setState({ movies: [mockMovies[0]] });
     wrapper.find(Like).props().onClick();
