@@ -10,7 +10,7 @@ function App() {
     <main className="container">
       <Navbar />
       <Routes>
-        <Route path="/" element={<Movies />} />
+        <Route path="/" exact element={<Movies />} />
         <Route path="/movies/:id" element={<MovieShow />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
