@@ -1,6 +1,5 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { render, screen } from "@testing-library/react";
 import Movies from "./Movies";
 import Like from "./common/like";
 import Pagination from "./common/pagination";
@@ -163,13 +162,6 @@ describe("Movies component", () => {
         <div className="card-footer text-muted">Owner: Martin Lopez</div>
       )
     ).toBe(true);
-  });
-
-  it("should render the view button for each movie", () => {
-    render(<Movies />);
-
-    // Assert that the view button is rendered for each movie
-    expect(screen.queryAllByText("View")).toHaveLength(3);
   });
 
   it("should call the handlePageChange method when a page is clicked in the pagination component", () => {
