@@ -1,3 +1,4 @@
+// TODO: Replace this with a real API call
 const genres = [
   {
     id: 1,

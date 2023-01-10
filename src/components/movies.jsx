@@ -20,6 +20,7 @@ class Movies extends Component {
     const { currentPage, pageSize } = this.state;
     const genres = [{ name: "All Genres", id: 0 }, ...getGenres()];
 
+    // TODO: Replace paginate to use a server side pagination
     this.setState({
       movies: paginate(getMovies(), currentPage, pageSize),
       genres,
@@ -27,6 +28,7 @@ class Movies extends Component {
   }
 
   handleView = (movie) => {
+    // TODO: Redirect to movie details page
     console.log(`/movies/${movie.id}`);
   };
 
@@ -41,6 +43,8 @@ class Movies extends Component {
   handlePageChange = (page) => {
     const currentPage = page + 1;
     const { movies, pageSize, selectedGenre } = this.state;
+
+    // TODO: Replace paginate to use a server side pagination
     const filteredMovies = paginate(
       this.filterMoviesByGenre(selectedGenre),
       currentPage,
@@ -59,6 +63,7 @@ class Movies extends Component {
     const currentPage = 1;
     const filteredMovies = this.filterMoviesByGenre(genre);
 
+    // TODO: Replace paginate to use a server side pagination
     this.setState({
       selectedGenre: genre,
       movies: paginate(filteredMovies, currentPage, pageSize),
