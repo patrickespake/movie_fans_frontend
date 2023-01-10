@@ -13,7 +13,7 @@ describe("Movies component", () => {
 
     // Assert that the count message is displayed correctly
     expect(
-      screen.getByText(/Showing 10 movies in the database./)
+      screen.getByText(/Showing 3 movies in the database./)
     ).toBeInTheDocument();
   });
 
@@ -21,15 +21,15 @@ describe("Movies component", () => {
     render(<Movies />);
 
     // Assert that the genres are rendered for each movie
-    expect(screen.getByText(/Documentary/)).toBeInTheDocument();
-    expect(screen.getByText(/Sci-Fi/)).toBeInTheDocument();
+    expect(screen.getByText(/Thriller/)).toBeInTheDocument();
+    expect(screen.getByText(/Romance/)).toBeInTheDocument();
   });
 
   it("should render the owner for each movie", () => {
     render(<Movies />);
 
     // Assert that the owner is rendered for each movie
-    expect(screen.getByText(/Jhon Doe/)).toBeInTheDocument();
+    expect(screen.getByText(/Martin Lopez/)).toBeInTheDocument();
     expect(screen.getByText(/Luis Miguel/)).toBeInTheDocument();
   });
 
@@ -37,6 +37,6 @@ describe("Movies component", () => {
     render(<Movies />);
 
     // Assert that the view button is rendered for each movie
-    expect(screen.queryAllByText("View")).toHaveLength(10);
+    expect(screen.queryAllByText("View")).toHaveLength(3);
   });
 });
