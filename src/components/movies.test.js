@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { shallow } from "enzyme";
 import Movies from "./Movies";
 import Like from "./common/like";
@@ -171,9 +172,10 @@ describe("Movies component", () => {
   });
 
   it("should render the view button for each movie", () => {
+    const link = wrapper.find(Link);
+
     // Assert that the view button is rendered for each movie
-    expect(
-      wrapper.find("button").filterWhere((n) => n.text() === "View")
-    ).toHaveLength(3);
+    expect(link).toHaveLength(3);
+    expect(link.first().text()).toBe("View");
   });
 });

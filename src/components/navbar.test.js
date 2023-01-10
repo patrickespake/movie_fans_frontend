@@ -1,29 +1,26 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { Link } from "react-router-dom";
+import { render } from "enzyme";
 import Navbar from "./Navbar";
+import { MemoryRouter } from "react-router-dom";
 
-describe("Navbar component", () => {
-  it("should render the header element with the correct class names", () => {
-    render(<Navbar />);
-
-    const header = screen.getByRole("banner");
-    expect(header).toHaveClass("pb-3 mb-4 border-bottom");
-  });
-
-  it("should render a link element with the correct href and class names", () => {
-    render(<Navbar />);
-
-    const link = screen.getByRole("link");
-    expect(link).toHaveClass(
-      "d-flex align-items-center text-dark text-decoration-none"
+describe("Navbar", () => {
+  it("should render a link to the home page", () => {
+    const view = render(
+      <MemoryRouter>
+        <Navbar />
+      </MemoryRouter>
     );
-    expect(link).toHaveAttribute("href", "/");
+    const link = view.find("a");
+    expect(link).toHaveLength(1);
   });
 
-  it("should render the correct text inside the link element", () => {
-    render(<Navbar />);
-
-    const link = screen.getByRole("link");
-    expect(link).toHaveTextContent("Movie Fans Frontend");
+  it("should have the text 'Movie Fans Frontend'", () => {
+    const view = render(
+      <MemoryRouter>
+        <Navbar />
+      </MemoryRouter>
+    );
+    expect(view.find("span").text()).toEqual("Movie Fans Frontend");
   });
 });

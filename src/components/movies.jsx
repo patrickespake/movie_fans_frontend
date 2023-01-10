@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Like from "./common/like";
 import ListGroup from "./common/listGroup";
+import { Link } from "react-router-dom";
 import Pagination from "./common/pagination";
 import { getMovies } from "../services/movieService";
 import { getGenres } from "../services/genreService";
@@ -26,11 +27,6 @@ class Movies extends Component {
       genres,
     });
   }
-
-  handleView = (movie) => {
-    // TODO: Redirect to movie details page
-    console.log(`/movies/${movie.id}`);
-  };
 
   handleLike = (movie) => {
     const movies = [...this.state.movies];
@@ -116,13 +112,12 @@ class Movies extends Component {
                         <div className="card-body">
                           <div className="d-flex justify-content-between align-items-center">
                             <p className="card-text">$ {movie.market_price}</p>
-                            <button
-                              type="button"
+                            <Link
+                              to={`/movies/${movie.id}`}
                               className="btn btn-sm btn-outline-secondary"
-                              onClick={() => this.handleView(movie)}
                             >
                               View
-                            </button>
+                            </Link>
                           </div>
                           <div className="d-flex justify-content-between align-items-center">
                             <Like
